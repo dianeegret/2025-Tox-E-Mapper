@@ -36,13 +36,14 @@ Tox-E-Mapper is an **interactive geospatial tool** that improves access to the U
 
 ## How to Use the Dashboard
 
-You can open the map locally or serve it via a simple web server:
+**Option 1 — Tableau Public:**
+* Click the link attached below to Tableau Public to have a quick view of the dashboard.
 
-**Option 1 — Quick View:**
+**Option 2 — HTML file in browser :**
 
-* Double-click `Tox_e_mapper.html` to open it in your browser (internet required).
+* After downloading it, double-click `Tox_e_mapper.html` to open it in your browser.
 
-**Option 2 — Local Server (Recommended):**
+**Option 3 — Local Server:**
 
 1. Open a terminal in this folder.
 2. Run:
