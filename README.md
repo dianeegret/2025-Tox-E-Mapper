@@ -1,71 +1,80 @@
+# Tox-E-Mapper
 
-Tox-E-Mapper
-=====================================
-Author: Diane Egret  
-Created: April 2025  
+Tox-E-Mapper is an **interactive geospatial tool** that improves access to the U.S. EPA’s **Toxics Release Inventory (TRI)** data. It helps users explore where toxic chemicals are released, identify pollution hotspots, and track trends over time.
 
-Tableau Public Link to Dashboard: https://public.tableau.com/app/profile/diane.egret/viz/ClusteredMap_17440624844360/Dashboard1
+## Project Overview
 
-Link to Demo Video: https://www.youtube.com/watch?v=nSbnjFp_rTA
+* **Problem:** Existing platforms like EPA’s EnviroMapper are hard to use and don’t support advanced exploration of TRI data.
+* **Goal:** Build an accessible, interactive dashboard to help policymakers, researchers, and the public make data-driven decisions about environmental health.
+* **Approach:**
 
-------------------------------------
-Project Description
-------------------------------------
-This project provides a spatial visualization of clustered geospatial data using Tableau. The dashboard highlights how data points are grouped into distinct clusters based on spatial or categorical attributes. This clustering enables clearer insights into regional patterns or relationships between geographic points of interest.
+  * Cleaned and processed **3M+ TRI records (1987–2023)**.
+  * Applied **PCA and K-Means clustering** to group facilities with similar release patterns.
+  * Built an interactive **Tableau dashboard** with filters, clustering overlays, and detailed tooltips.
+  * Conducted a usability evaluation — users found Tox-E-Mapper significantly easier and faster than EnviroMapper.
 
-The map makes use of:
-- Color-coded clusters for clear spatial segmentation
-- Tooltips that display relevant metadata for each datapoint
-- A search bar and filters to pinpoint specific locations or zoom to areas of interest.
+## Skills Demonstrated
 
-The analysis can be used for applications like:
-- Identifying regions of high concentration or interest
-- Visualizing service areas, client distributions, or resource allocation
+* **Data Cleaning & Preparation**: Removing incomplete and zero-heavy features, standardizing geospatial fields.
+* **Exploratory Data Analysis**: Correlation analysis, feature importance, log-scale visualizations.
+* **Machine Learning**: PCA for dimensionality reduction, K-Means clustering to identify pollution hotspots.
+* **Data Visualization**: Interactive Tableau dashboards with search, filters, and tooltips.
+* **User Research & Evaluation**: Designed and ran a usability study comparing Tox-E-Mapper with EnviroMapper.
 
-------------------------------------
-Data Description
-------------------------------------
-This dashboard visualizes facility-level data from the TRI Program, managed by the U.S. Environmental Protection Agency (EPA). The TRI program tracks the management of certain toxic chemicals that may pose a threat to human health or the environment. Facilities in different industries are required to report releases of these chemicals to air, water, and land, as well as waste management practices.
+## Tools & Technologies
 
-Data fields and filters in this dashboard include:
-- Year, State, Zip Code, and City: Geospatial filters to explore local or regional trends.
-- Industry Name: Coded using NAICS (North American Industry Classification System) for industry-specific filtering.
-- Chemical Name: Select from a range of EPA-listed toxic chemicals tracked in the TRI database.
-- Carcinogen (Y/N): Indicates whether the chemical is classified as a known or suspected carcinogen.
-- Cluster (0 to 19): Groupings derived from clustering analysis based on spatial and production waste attributes.
-- Log(Prod. Waste (Pounds)): Size of the data point is based on the logarithm of production waste in pounds, allowing for visualization across several orders of magnitude. Without transforming this field, some data points would be almost invisible and others would be too far-reaching.
+* Python (Pandas, scikit-learn) for cleaning, feature engineering, and clustering.
+* Tableau for interactive dashboards.
+* SQLite for lightweight data management.
+* HTML, CSS, and JavaScript for deployment.
 
-------------------------------------
-How to Use the Website
-------------------------------------
-To view the interactive map locally:
+## Repository Contents
 
-Option 1 — Quick View:
-- Double-click `Tox_e_mapper.html` to open it in your browser (requires internet access)
+* **`Tox_e_mapper.html`** – Local HTML file to view the interactive dashboard.
+* **`team060poster.pdf`** – Poster summarizing the project.
+* **`team060report.pdf`** – Full project report with methods, evaluation, and results.
 
-Option 2 — Local Server (Recommended):
-1. Open a terminal or command prompt in this folder
+## How to Use the Dashboard
+
+You can open the map locally or serve it via a simple web server:
+
+**Option 1 — Quick View:**
+
+* Double-click `Tox_e_mapper.html` to open it in your browser (internet required).
+
+**Option 2 — Local Server (Recommended):**
+
+1. Open a terminal in this folder.
 2. Run:
-   > python -m http.server 8000
-3. Open your browser and go to:
-   > http://localhost:8000
 
-The dashboard should load and allow basic interactions like zooming, panning, clicking and hovering for details.
+   ```bash
+   python -m http.server 8000
+   ```
+3. Go to [http://localhost:8000](http://localhost:8000) in your browser.
 
-------------------------------------
-Navigating the Dashboard
-------------------------------------
-- **Hover** over points to reveal detailed information about the facility, waste quantity, and chemical.
-- **Zoom & Pan** to explore the map.
-- **Filter Controls (Sidebar)**: Use dropdowns and text boxes to filter by location, industry, chemical, toxicity classification or cluster.
-- **Click** on a data point to highlight the selected facility.
-- **Search Bar (Top-Left)**: Use the built-in Tableau map search to look up specific addresses or place names and explore TRI activity nearby.
+**Navigation Tips:**
 
-------------------------------------
-Notes
-------------------------------------
-- The visualization is hosted on Tableau Public. It requires an internet connection to load.
-- This site is for demo use. Not intended for commercial deployment without further hosting setup.
-- This project was completed through the Data and Visual Analytics class (CSE 6242) at Georgia Tech, by my group and I:
+* **Hover** over points for facility, chemical, and waste details.
+* **Zoom & Pan** to explore regions.
+* **Filters (Sidebar):** Filter by state, industry, chemical, carcinogen classification, or cluster.
+* **Search Bar:** Look up addresses or place names to check local TRI activity.
 
-   Diane Egret, Arya Kalappurayil, Cecili Poole, and Rhee Kang.
+## Key Findings
+
+* **Top predictors** of emissions included facility industry type and production waste.
+* Clustering revealed **pollution hotspots** not obvious from raw TRI data.
+* Users found Tox-E-Mapper easier to use and more effective for spotting trends than EPA’s EnviroMapper.
+
+## Links
+
+* [Tableau Public Dashboard](https://public.tableau.com/app/profile/diane.egret/viz/ClusteredMap_17440624844360/Dashboard1)
+* [Demo Video](https://www.youtube.com/watch?v=nSbnjFp_rTA)
+
+## Credits
+
+Project completed by my teammates and myself through CSE 6242 (Data and Visual Analytics) at **Georgia Tech**:
+
+* Diane Egret
+* Arya Kalappurayil
+* Cecili Poole
+* Rhee Kang
