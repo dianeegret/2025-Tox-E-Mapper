@@ -66,3 +66,6 @@ Notes
 ------------------------------------
 - The visualization is hosted on Tableau Public. It requires an internet connection to load.
 - This site is for demo use. Not intended for commercial deployment without further hosting setup.
+- This project was completed through the Data and Visual Analytics class (CSE 6242) at Georgia Tech, by my group and I:
+
+   Diane Egret, Arya Kalappurayil, Cecili Poole, and Rhee Kang.
