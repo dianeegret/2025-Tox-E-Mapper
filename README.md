@@ -13,6 +13,9 @@ Tox-E-Mapper is an **interactive geospatial tool** that improves access to the U
   * Built an interactive **Tableau dashboard** with filters, clustering overlays, and detailed tooltips.
   * Conducted a usability evaluation — users found Tox-E-Mapper significantly easier and faster than EnviroMapper.
 
+Below is a screenshot of the dashboard for illustrative purposes:
+<img src="image/Screenshot.png" width="1000">
+
 ## Skills Demonstrated
 
 * **Data Cleaning & Preparation**: Removing incomplete and zero-heavy features, standardizing geospatial fields.
