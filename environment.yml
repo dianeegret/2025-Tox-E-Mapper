@@ -99,4 +99,4 @@ dependencies:
   - ydata-profiling=4.8.3=py310hca03da5_0
   - zlib=1.2.13=h18a0788_1
   - zstd=1.5.6=hfb09047_0
-prefix: /Users/cecili/anaconda3/envs/dva
+  
