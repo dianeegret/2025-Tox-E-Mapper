@@ -1,85 +1,129 @@
 # Tox-E-Mapper
 
-Tox-E-Mapper is an **interactive geospatial tool** that improves access to the U.S. EPA’s **Toxics Release Inventory (TRI)** data. It helps users explore where toxic chemicals are released, identify pollution hotspots, and track trends over time.
+**Enterprise Analytics Pipeline for Environmental Risk Monitoring**
 
 ## Project Overview
 
-* **Problem:** Existing platforms like EPA’s EnviroMapper are hard to use and don’t support advanced exploration of TRI data.
-* **Goal:** Build an accessible, interactive dashboard to help policymakers, researchers, and the public make data-driven decisions about environmental health.
-* **Approach:**
+Tox-E-Mapper is an end-to-end analytics project designed to improve access to and analysis of the U.S. EPA’s Toxics Release Inventory (TRI) data. The project supports data-driven monitoring of toxic chemical releases by identifying geographic hotspots, facility-level patterns, and temporal trends that can inform environmental risk assessment, operational planning, and policy decisions.
 
-  * Cleaned and processed **3M+ TRI records (1987–2023)**.
-  * Applied **PCA and K-Means clustering** to group facilities with similar release patterns.
-  * Built an interactive **Tableau dashboard** with filters, clustering overlays, and detailed tooltips.
-  * Conducted a usability evaluation — users found Tox-E-Mapper significantly easier and faster than EnviroMapper.
+The focus of the project is not only interactive visualization, but also data quality, analytical rigor, and clear translation of complex data into actionable insights.
+
+---
+
+## Data Description
+
+The analysis is based on TRI data published by the U.S. Environmental Protection Agency, covering millions of annual records reported by industrial facilities across the United States.
+
+Key characteristics:
+
+* Over **3 million structured records** spanning multiple decades
+* Facility, chemical, geographic, and time-based attributes
+* Data suitable for aggregation, validation, clustering, and trend analysis
+
+Raw data files are not included in this repository due to size constraints. The expected schema, validation logic, and transformation steps are documented in the code and notebooks.
+
+---
+
+## Pipeline Architecture
+
+The project follows a structured analytics pipeline:
+
+1. **Data Ingestion**
+
+   * Importing TRI data into a lightweight analytical database
+   * Initial schema checks and record count validation
+
+2. **Data Profiling and Validation**
+
+   * Null and duplicate detection
+   * Distribution profiling to identify anomalies and zero-heavy features
+   * Basic integrity checks to support data quality and governance
+
+3. **Cleaning and Transformation**
+
+   * Standardization of geographic and categorical fields
+   * Feature engineering for aggregation and modeling
+   * Preparation of analysis-ready datasets
+
+4. **Exploratory Data Analysis**
+
+   * Temporal trend analysis of chemical releases
+   * Geographic aggregation to surface regional patterns
+   * Facility-level comparisons across industries
+
+5. **Modeling and Segmentation**
+
+   * Dimensionality reduction using Principal Component Analysis (PCA)
+   * K-Means clustering to group facilities with similar release profiles
+   * Interpretation of clusters to highlight pollution hotspots and outliers
+
+6. **Visualization and Reporting**
+
+   * Interactive dashboard for exploratory analysis and stakeholder use
+   * Clear, filterable views to support decision-making
+
+---
+
+## Key Outputs and Insights
+
+* Identification of geographic regions with concentrated toxic releases
+* Facility-level clustering revealing patterns not visible in raw data
+* Temporal trends showing changes in emissions over time
+* Aggregated views suitable for KPI-style monitoring and reporting
+
+These outputs are designed to support exploratory analysis, performance tracking, and downstream forecasting or risk assessment workflows.
+
+---
+
+## Dashboard
+
+An interactive Tableau dashboard was developed to allow non-technical users to explore toxic release trends, geographic distributions, and cluster groupings.
+
+Due to file size limits, Tableau Prep (`.tflx`) and packaged workbook (`.twbx`) files are not stored directly in this repository.
+
+A public, view-only version of the dashboard is available here:
+**[https://public.tableau.com/app/profile/diane.egret/viz/ClusteredMap_17440624844360/Dashboard1](https://public.tableau.com/app/profile/diane.egret/viz/ClusteredMap_17440624844360/Dashboard1)**
+
+A local HTML export of the dashboard is also included for offline viewing.
 
 Below is a screenshot of the dashboard for illustrative purposes:
 
 <img src="image/Screenshot.png" width="1000">
 
-## Skills Demonstrated
+---
 
-* **Data Cleaning & Preparation**: Removing incomplete and zero-heavy features, standardizing geospatial fields.
-* **Exploratory Data Analysis**: Correlation analysis, feature importance, log-scale visualizations.
-* **Machine Learning**: PCA for dimensionality reduction, K-Means clustering to identify pollution hotspots.
-* **Data Visualization**: Interactive Tableau dashboards with search, filters, and tooltips.
-* **User Research & Evaluation**: Designed and ran a usability study comparing Tox-E-Mapper with EnviroMapper.
+## Tools and Technologies
 
-## Tools & Technologies
+* **Python** (data ingestion, profiling, feature engineering, modeling)
+* **SQL / SQLite** (data storage, validation, and aggregation)
+* **Pandas, NumPy, scikit-learn** (EDA, PCA, clustering)
+* **Tableau** (interactive visualization)
+* **Git/GitHub** (version control and documentation)
 
-* Python (Pandas, scikit-learn) for cleaning, feature engineering, and clustering.
-* Tableau for interactive dashboards.
-* SQLite for lightweight data management.
-* HTML, CSS, and JavaScript for deployment.
+---
 
-## Repository Contents
+## Enterprise Extensions
 
-* **`Tox_e_mapper.html`** – Local HTML file to view the interactive dashboard.
-* **`team060poster.pdf`** – Poster summarizing the project.
-* **`team060report.pdf`** – Full project report with methods, evaluation, and results.
+In a production analytics environment, this project could be extended by:
 
-## How to Use the Dashboard
+* Automating ingestion, validation, and refresh cycles using workflow orchestration tools
+* Scaling transformations and aggregations using Spark-based pipelines
+* Persisting curated datasets for downstream machine learning or forecasting models
+* Formalizing data quality checks within a governance framework
+* Integrating KPIs into operational dashboards for ongoing monitoring
 
-**Option 1 — Tableau Public:**
-* Click the link attached below to Tableau Public to have a quick view of the dashboard.
+---
 
-**Option 2 — HTML file in browser :**
+## Repository Structure
 
-* After downloading it, double-click `Tox_e_mapper.html` to open it in your browser.
+```
+src/        Core Python scripts for ingestion, profiling, and modeling  
+dashboard/  Dashboard documentation
+docs/       Project report and poster for additional context  
+```
 
-**Option 3 — Local Server:**
+---
 
-1. Open a terminal in this folder.
-2. Run:
+## Notes for Reviewers
 
-   ```bash
-   python -m http.server 8000
-   ```
-3. Go to [http://localhost:8000](http://localhost:8000) in your browser.
-
-**Navigation Tips:**
-
-* **Hover** over points for facility, chemical, and waste details.
-* **Zoom & Pan** to explore regions.
-* **Filters (Sidebar):** Filter by state, industry, chemical, carcinogen classification, or cluster.
-* **Search Bar:** Look up addresses or place names to check local TRI activity.
-
-## Key Findings
-
-* **Top predictors** of emissions included facility industry type and production waste.
-* Clustering revealed **pollution hotspots** not obvious from raw TRI data.
-* Users found Tox-E-Mapper easier to use and more effective for spotting trends than EPA’s EnviroMapper.
-
-## Links
-
-* [Tableau Public Dashboard](https://public.tableau.com/app/profile/diane.egret/viz/ClusteredMap_17440624844360/Dashboard1)
-* [Demo Video](https://www.youtube.com/watch?v=nSbnjFp_rTA)
-
-## Credits
-
-Project completed by my teammates and myself through CSE 6242 (Data and Visual Analytics) at **Georgia Tech**:
-
-* Diane Egret
-* Arya Kalappurayil
-* Cecili Poole
-* Rhee Kang
+While this project originated in an academic setting, it is presented here as an **end-to-end analytics system** to demonstrate how I approach data ingestion, validation, analysis, and communication in an enterprise-style environment.
